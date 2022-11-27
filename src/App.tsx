@@ -15,7 +15,7 @@ function App() {
     try {
       await esbuild.initialize({
         worker: true,
-        wasmURL: 'https://www.unpkg.com/esbuild-wasm@0.15.16/esbuild.wasm',
+        wasmURL: 'https://www.unpkg.com/esbuild-wasm@0.15.15/esbuild.wasm',
       });
 
       setInitialized(true);
