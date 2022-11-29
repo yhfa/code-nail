@@ -31,8 +31,13 @@ const CodeEditor: FC<ICodeEditor> = ({ initialValue, onChange }) => {
   };
 
   return (
-    <div>
-      <button onClick={formatHandler}>Format</button>
+    <div className="group relative h-full">
+      <button
+        className="absolute top-1 right-1 z-20 bg-orange-500 px-3 py-2 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        onClick={formatHandler}
+      >
+        Format
+      </button>
       <MonacoEditor
         onChange={onChange}
         value={initialValue}
