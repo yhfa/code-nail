@@ -1,32 +1,34 @@
 import { useEffect, useRef, useState } from 'react';
+import { OnChange } from '@monaco-editor/react';
 import * as esbuild from 'esbuild-wasm';
 
 import './App.css';
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 import { fetchPlugin } from './plugins/fetch-plugin';
+import CodeEditor from './components/code-editor';
 
 function App() {
   const [initialized, setInitialized] = useState(false);
   const [input, setInput] = useState('');
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const startService = async () => {
-    if (initialized) return;
-    try {
-      await esbuild.initialize({
-        worker: true,
-        wasmURL: 'https://www.unpkg.com/esbuild-wasm@0.15.15/esbuild.wasm',
-      });
-
-      setInitialized(true);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   useEffect(() => {
+    const startService = async () => {
+      if (initialized) return;
+      try {
+        await esbuild.initialize({
+          worker: true,
+          wasmURL: 'https://www.unpkg.com/esbuild-wasm@0.15.15/esbuild.wasm',
+        });
+
+        setInitialized(true);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
     startService();
-  });
+  }, [initialized]);
 
   const clickHandler = async () => {
     if (!initialized) return;
@@ -75,8 +77,13 @@ function App() {
 
   `;
 
+  const codeChangeHandler: OnChange = (value) => {
+    if (typeof value === 'string') setInput(value);
+  };
+
   return (
     <div className="App">
+      <CodeEditor initialValue={'const a = 2;'} onChange={codeChangeHandler} />
       <textarea value={input} onChange={(e) => setInput(e.target.value)} />
       <div>
         <button onClick={clickHandler}>Submit</button>
