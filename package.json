@@ -10,12 +10,14 @@
   "dependencies": {
     "@monaco-editor/react": "^4.4.6",
     "@types/prettier": "^2.7.1",
+    "@types/react-resizable": "^3.0.3",
     "axios": "^1.2.0",
     "esbuild-wasm": "^0.15.15",
     "localforage": "^1.10.0",
     "monaco-editor": "^0.34.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-resizable": "^3.0.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",
