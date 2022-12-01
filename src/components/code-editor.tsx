@@ -19,12 +19,14 @@ const CodeEditor: FC<ICodeEditor> = ({ initialValue, onChange }) => {
     const unformatted = editorRef.current.getModel()?.getValue() || '';
 
     // Format the value
-    const formatted = prettier.format(unformatted, {
-      parser: 'babel',
-      plugins: [parser],
-      singleQuote: true,
-      useTabs: true,
-    });
+    const formatted = prettier
+      .format(unformatted, {
+        parser: 'babel',
+        plugins: [parser],
+        singleQuote: true,
+        useTabs: true,
+      })
+      .replace(/\n$/, '');
 
     // Set the formatted value back to editor
     editorRef.current.setValue(formatted);
