@@ -2,6 +2,7 @@ import { FC, useRef, useEffect } from 'react';
 
 interface IPreview {
   code: string;
+  error: string;
 }
 
 const html = `
@@ -10,15 +11,24 @@ const html = `
 <body>
   <div id="root"></div>
   <script>
+    const handleError = (error) =>{
+      const root = document.getElementById('root');
+      root.innerHTML = '<div style="color: red;"><h4>Runtime Error</h4>' + error + '</div>';
+      console.error(error);
+    };
+
+    window.addEventListener('error', (event) => {
+      event.preventDefault();
+      handleError(event.error);
+    });
+
     window.addEventListener(
       'message',
       (event) => {
         try {
           eval(event.data);
         } catch (error) {
-          const root = document.getElementById('root');
-          root.innerHTML = '<div style="color: red;"><h4>Runtime Error</h4>' + error + '</div>';
-          console.error(error);
+          handleError(error)
         }
       },
       false
@@ -29,7 +39,7 @@ const html = `
 
 `;
 
-const Preview: FC<IPreview> = ({ code }) => {
+const Preview: FC<IPreview> = ({ code, error }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
@@ -45,7 +55,7 @@ const Preview: FC<IPreview> = ({ code }) => {
   }, [code]);
 
   return (
-    <div className="grow">
+    <div className="relative grow">
       <iframe
         ref={iframeRef}
         className="h-full w-full bg-white"
@@ -53,6 +63,9 @@ const Preview: FC<IPreview> = ({ code }) => {
         srcDoc={html}
         sandbox="allow-scripts"
       />
+      {error && (
+        <div className="absolute top-3 left-3 text-red-600">{error}</div>
+      )}
     </div>
   );
 };
