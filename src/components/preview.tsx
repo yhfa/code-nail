@@ -33,11 +33,15 @@ const Preview: FC<IPreview> = ({ code }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
+    // Reset the current content
     if (iframeRef.current) iframeRef.current.srcdoc = html;
 
-    if (iframeRef.current?.contentWindow) {
-      iframeRef.current.contentWindow.postMessage(code, '*');
-    }
+    // Delay the processing of the code to avoid reset the content
+    setTimeout(() => {
+      if (iframeRef.current?.contentWindow) {
+        iframeRef.current.contentWindow.postMessage(code, '*');
+      }
+    }, 50);
   }, [code]);
 
   return (
