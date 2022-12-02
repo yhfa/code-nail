@@ -33,7 +33,7 @@ const CodeEditor: FC<ICodeEditor> = ({ initialValue, onChange }) => {
   };
 
   return (
-    <div className="group relative h-full">
+    <div className="calc group relative h-full w-[calc(100%_-_10px)]">
       <button
         className="absolute top-1 right-1 z-20 bg-orange-500 px-3 py-2 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         onClick={formatHandler}
@@ -43,7 +43,6 @@ const CodeEditor: FC<ICodeEditor> = ({ initialValue, onChange }) => {
       <MonacoEditor
         onChange={onChange}
         value={initialValue}
-        height="500px"
         theme="vs-dark"
         language="javascript"
         onMount={(editor) => (editorRef.current = editor)}

@@ -45,12 +45,15 @@ const Preview: FC<IPreview> = ({ code }) => {
   }, [code]);
 
   return (
-    <iframe
-      ref={iframeRef}
-      title="code preview"
-      srcDoc={html}
-      sandbox="allow-scripts"
-    />
+    <div className="grow">
+      <iframe
+        ref={iframeRef}
+        className="h-full w-full bg-white"
+        title="code preview"
+        srcDoc={html}
+        sandbox="allow-scripts"
+      />
+    </div>
   );
 };
 
