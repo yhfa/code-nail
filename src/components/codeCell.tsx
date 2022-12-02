@@ -10,14 +10,18 @@ function CodeCell() {
   const [input, setInput] = useState('');
   const [code, setCode] = useState('');
 
-  const clickHandler = async () => {
-    const code = await bundle(input);
-    setCode(code);
-  };
-
   const codeChangeHandler: OnChange = (value) => {
     if (typeof value === 'string') setInput(value);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(async () => {
+      const code = await bundle(input);
+      setCode(code);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [input]);
 
   return (
     <Resizable direction="vertical">
