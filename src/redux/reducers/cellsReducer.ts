@@ -46,7 +46,7 @@ export const cellsReducer = produce(
         const { id, direction } = payload;
         const index = state.order.findIndex((cellId) => cellId === id);
 
-        if (!index) return state;
+        if (index === -1) return state;
         const targetIndex = direction === 'up' ? index - 1 : index + 1;
         if (targetIndex < 0 || targetIndex > state.order.length - 1)
           return state;
