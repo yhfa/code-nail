@@ -1,10 +1,9 @@
-import CodeCell from './components/codeCell';
+import CellList from './components/cellList';
 
 function App() {
   return (
     <div>
-      <CodeCell />
-      {/* <CodeCell /> */}
+      <CellList />
     </div>
   );
 }
