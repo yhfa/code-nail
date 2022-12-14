@@ -33,7 +33,7 @@ const CodeCell: FC<ICodeCell> = ({ cell: { content, id } }) => {
 
   return (
     <Resizable direction="vertical">
-      <div className="flex h-full flex-row">
+      <div className="flex h-[calc(100%_-_10px)] flex-row">
         <Resizable direction="horizontal">
           <CodeEditor initialValue={content} onChange={codeChangeHandler} />
         </Resizable>
