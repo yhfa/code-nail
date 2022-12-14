@@ -22,7 +22,7 @@ export const cellsReducer = produce(
   (state: cellsState = initialState, action: CellsAction): cellsState => {
     const { type, payload } = action;
     switch (type) {
-      case CellsActionType.INSERT_CELL_BEFORE: {
+      case CellsActionType.INSERT_CELL_AFTER: {
         const { id, cellType } = payload;
 
         const index = state.order.findIndex((cellId) => cellId === id);
@@ -33,9 +33,9 @@ export const cellsReducer = produce(
         };
 
         if (index === -1) {
-          state.order.push(cell.id);
+          state.order.unshift(cell.id);
         } else {
-          state.order.splice(index, 0, cell.id);
+          state.order.splice(index + 1, 0, cell.id);
         }
 
         state.data[cell.id] = cell;
