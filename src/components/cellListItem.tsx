@@ -1,4 +1,6 @@
 import { FC } from 'react';
+import { AnimateSharedLayout, motion } from 'framer-motion';
+
 import { Cell } from '../redux';
 import ActionBar from './actionBar';
 import CodeCell from './codeCell';
@@ -14,11 +16,19 @@ const CellListItem: FC<ICellListItem> = ({ cell }) => {
       <ActionBar id={cell.id} />
       {cell.type === 'code' ? (
         <>
-          <div className="h-8 w-full bg-[#37414b]"></div>
-          <CodeCell cell={cell} />
+          <AnimateSharedLayout>
+            <motion.div layout>
+              <div className="h-8 w-full bg-[#37414b]"></div>
+              <CodeCell cell={cell} />
+            </motion.div>
+          </AnimateSharedLayout>
         </>
       ) : (
-        <TextEditor cell={cell} />
+        <AnimateSharedLayout>
+          <motion.div layout>
+            <TextEditor cell={cell} />
+          </motion.div>
+        </AnimateSharedLayout>
       )}
     </div>
   );
