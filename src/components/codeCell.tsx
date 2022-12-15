@@ -5,7 +5,7 @@ import CodeEditor from './codeEditor';
 import Preview from './preview';
 import Resizable from './resizable';
 import { Cell } from '../redux';
-import { useAction, useAppSelector, useCumulativeCod } from '../hooks';
+import { useAction, useAppSelector, useCumulativeCode } from '../hooks';
 
 interface ICodeCell {
   cell: Cell;
@@ -14,7 +14,7 @@ interface ICodeCell {
 const CodeCell: FC<ICodeCell> = ({ cell: { content, id } }) => {
   const { updateCell, createBundle } = useAction();
   const bundle = useAppSelector(({ bundles }) => bundles[id]);
-  const cumulativeCode = useCumulativeCod(id);
+  const cumulativeCode = useCumulativeCode(id);
 
   const codeChangeHandler: OnChange = (value) => {
     if (typeof value === 'string') updateCell(id, value);

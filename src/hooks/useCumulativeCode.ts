@@ -1,6 +1,6 @@
 import { useAppSelector } from './useAppSelector';
 
-export const useCumulativeCod = (cellId: string) => {
+export const useCumulativeCode = (cellId: string) => {
   return useAppSelector(({ cells: { data, order } }) => {
     const currentCellIndex = order.indexOf(cellId);
 
