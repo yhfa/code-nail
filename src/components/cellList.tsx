@@ -10,7 +10,7 @@ function CellList() {
   );
 
   return (
-    <div className="">
+    <div className="mx-6">
       <AddCell forceVisible={cells.length === 0} previousCellId={null} />
       {cells.map((cell) => (
         <Fragment key={cell.id}>
