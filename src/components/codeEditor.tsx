@@ -35,7 +35,7 @@ const CodeEditor: FC<ICodeEditor> = ({ initialValue, onChange }) => {
   return (
     <div className="calc group relative h-full w-[calc(100%_-_10px)]">
       <button
-        className="absolute top-1 right-1 z-20 bg-orange-500 px-3 py-2 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="absolute top-1 right-1 z-20 bg-orange-500 px-3 py-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         onClick={formatHandler}
       >
         Format

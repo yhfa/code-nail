@@ -19,7 +19,7 @@ const AddCell: FC<IAddCell> = ({
     >
       <div className="flex justify-center gap-10">
         <button
-          className="rounded-full bg-orange-500 p-2 py-1 text-white"
+          className="rounded-full bg-orange-500 px-2 py-1"
           onClick={() => insertCellAfter(nextCellId, 'code')}
         >
           <span className="mr-1">
@@ -28,7 +28,7 @@ const AddCell: FC<IAddCell> = ({
           <span>Code</span>
         </button>
         <button
-          className="rounded-2xl bg-orange-500 py-1 px-2 text-white"
+          className="rounded-2xl bg-orange-500 px-2 py-1"
           onClick={() => insertCellAfter(nextCellId, 'text')}
         >
           <span className="mr-1">
