@@ -5,7 +5,7 @@ import CodeEditor from './codeEditor';
 import Preview from './preview';
 import Resizable from './resizable';
 import { Cell } from '../redux';
-import { useAction, useAppSelector } from '../hooks';
+import { useAction, useAppSelector, useCumulativeCod } from '../hooks';
 
 interface ICodeCell {
   cell: Cell;
@@ -14,18 +14,19 @@ interface ICodeCell {
 const CodeCell: FC<ICodeCell> = ({ cell: { content, id } }) => {
   const { updateCell, createBundle } = useAction();
   const bundle = useAppSelector(({ bundles }) => bundles[id]);
+  const cumulativeCode = useCumulativeCod(id);
 
   const codeChangeHandler: OnChange = (value) => {
     if (typeof value === 'string') updateCell(id, value);
   };
 
   useEffect(() => {
-    if (!bundle) createBundle(id, content);
-    const timer = setTimeout(() => createBundle(id, content), 1000);
+    if (!bundle) createBundle(id, cumulativeCode);
+    const timer = setTimeout(() => createBundle(id, cumulativeCode), 1000);
 
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [content, createBundle, id]);
+  }, [createBundle, cumulativeCode, id]);
 
   return (
     <Resizable direction="vertical">
