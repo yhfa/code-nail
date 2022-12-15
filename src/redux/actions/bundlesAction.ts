@@ -1,6 +1,21 @@
-export interface IMPLEMENT_LATER_ACTION {
-  type: '';
-  payload: null;
+import { BundlesActionType } from '../action-types';
+
+export interface BundleStartAction {
+  type: BundlesActionType.BUNDLE_START;
+  payload: {
+    cellId: string;
+  };
 }
 
-export type BundlesAction = IMPLEMENT_LATER_ACTION;
+export interface BundleCompleteAction {
+  type: BundlesActionType.BUNDLE_COMPLETE;
+  payload: {
+    cellId: string;
+    bundle: {
+      code: string;
+      error: string;
+    };
+  };
+}
+
+export type BundlesAction = BundleStartAction | BundleCompleteAction;
