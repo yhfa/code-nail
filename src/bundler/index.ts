@@ -28,6 +28,8 @@ const bundle = async (
         [envKey]: '"production"',
         global: 'window',
       },
+      jsxFactory: '__React.createElement',
+      jsxFragment: '__React.Fragment',
     });
 
     return {
