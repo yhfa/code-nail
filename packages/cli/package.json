@@ -1,6 +1,6 @@
 {
   "name": "codenail",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "",
   "scripts": {
     "start": "tsc --watch --preserveWatchOutput",
@@ -20,9 +20,9 @@
     "@codenail/local-client": "^1.0.0"
   },
   "devDependencies": {
-    "@codenail/local-api": "^1.0.0",
-    "commander": "^9.4.1",
+    "@codenail/local-api": "^1.0.0-alpha.0",
     "@types/node": "^18.11.15",
+    "commander": "^9.4.1",
     "esbuild": "^0.16.10",
     "typescript": "^4.9.4"
   }

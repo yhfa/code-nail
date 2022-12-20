@@ -1,6 +1,6 @@
 {
   "name": "@codenail/local-client",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.0",
   "type": "module",
   "scripts": {
     "start": "vite",
