@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@codenail/local-client": "^1.0.0"
+    "@codenail/local-client": "^1.0.0-alpha.0"
   },
   "devDependencies": {
     "@codenail/local-api": "^1.0.0-alpha.0",
