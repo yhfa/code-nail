@@ -1,6 +1,6 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 
-import { useAppSelector } from '../hooks';
+import { useAppSelector, useAction } from '../hooks';
 import AddCell from './addCell';
 import CellListItem from './cellListItem';
 
@@ -8,6 +8,12 @@ function CellList() {
   const cells = useAppSelector(({ cells: { data, order } }) =>
     order.map((id) => data[id])
   );
+
+  const { fetchCells } = useAction();
+
+  useEffect(() => {
+    fetchCells();
+  }, []);
 
   return (
     <div className="mx-6">

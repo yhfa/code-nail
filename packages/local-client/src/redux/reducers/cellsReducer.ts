@@ -22,6 +22,30 @@ export const cellsReducer = produce(
   (state: cellsState = initialState, action: CellsAction): cellsState => {
     const { type, payload } = action;
     switch (type) {
+      case CellsActionType.SAVE_CELLS_ERROR: {
+        state.error = payload;
+        return state;
+      }
+      case CellsActionType.FETCH_CELLS: {
+        state.loading = true;
+        state.error = null;
+        return state;
+      }
+      case CellsActionType.FETCH_CELLS_COMPLETE: {
+        state.loading = false;
+        state.order = payload.map((cell) => cell.id);
+
+        state.data = payload.reduce((prevCells, currentCell) => {
+          prevCells[currentCell.id] = currentCell;
+          return prevCells;
+        }, {} as cellsState['data']);
+        return state;
+      }
+      case CellsActionType.FETCH_CELLS_ERROR: {
+        state.loading = false;
+        state.error = payload;
+        return state;
+      }
       case CellsActionType.INSERT_CELL_AFTER: {
         const { id, cellType } = payload;
 

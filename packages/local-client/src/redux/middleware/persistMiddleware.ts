@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { CellsAction } from '../actions';
 import { CellsActionType } from '../action-types';
 import { saveCells } from '../action-creators';
-import { RootState } from '../reducers';
+import { RootState } from '..';
 
 let timer: number;
 
