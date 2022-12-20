@@ -25,7 +25,9 @@ export const serve = async (
     );
   } else {
     // Serve the client app in production as static file
-    const packagePath = require.resolve("local-client/dist/index.html");
+    const packagePath = require.resolve(
+      "@codenail/local-client/dist/index.html"
+    );
     app.use(express.static(path.dirname(packagePath)));
   }
 

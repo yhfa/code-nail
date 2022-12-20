@@ -1,11 +1,18 @@
 {
-  "name": "local-client",
+  "name": "@codenail/local-client",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.1",

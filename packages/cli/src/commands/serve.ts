@@ -1,6 +1,6 @@
 import path from "path";
 import { Command } from "commander";
-import { serve } from "local-api";
+import { serve } from "@codenail/local-api";
 
 interface ILocalApiError {
   code: string;
